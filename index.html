@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Movimiento Browniano</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Movimiento Browniano discreto</h1>
+    <p class="subtitle">Distancia máxima al origen de una caminata aleatoria en Rⁿ</p>
+
+    <section class="card">
+      <h2>Parámetros de entrada</h2>
+      <div class="field">
+        <label for="dimension">Dimensión (n)</label>
+        <input type="number" id="dimension" value="2" min="1" max="10" step="1">
+      </div>
+      <div class="field">
+        <label for="steps">Número de pasos</label>
+        <input type="number" id="steps" value="1000" min="1" max="100000" step="1">
+      </div>
+      <div class="field">
+        <label for="repetitions">Repeticiones</label>
+        <input type="number" id="repetitions" value="100" min="1" max="100000" step="1">
+      </div>
+      <button id="runBtn">Ejecutar experimento</button>
+      <p id="error" class="error"></p>
+    </section>
+
+    <section class="card" id="resultCard" hidden>
+      <h2>Resultados</h2>
+      <p>Promedio de distancia máxima: <strong id="avgOut">-</strong></p>
+      <p>Tiempo de ejecución: <strong id="timeOut">-</strong></p>
+      <details>
+        <summary>Ver todas las distancias máximas</summary>
+        <pre id="distancesOut"></pre>
+      </details>
+    </section>
+  </main>
+
+      <section class="card">
+      <h2>Tabla de resultados completa</h2>
+      <p>Ejecuta todas las combinaciones de 100, 1000 y 10000 pasos × 100, 1000 y 10000 repeticiones, en 1D y 2D.</p>
+      <button id="batchBtn">Generar tabla completa</button>
+      <p id="progress"></p>
+
+      <div id="batchResults" hidden>
+        <div class="table-wrap">
+          <table id="resultsTable">
+            <thead>
+              <tr>
+                <th>Dim.</th>
+                <th>Pasos</th>
+                <th>Repeticiones</th>
+                <th>Prom. dist. máx.</th>
+                <th>Prom. / √pasos</th>
+                <th>Tiempo (ms)</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <button id="downloadSummaryBtn">Descargar tabla (CSV)</button>
+        <button id="downloadDetailBtn">Descargar todas las distancias (CSV)</button>
+      </div>
+    </section>
+
+  <script src="js/RandomWalk.js"></script>
+  <script src="js/Experiment.js"></script>
+  <script src="js/BatchRunner.js"></script>
+  <script src="js/main.js"></script>
+  
+</body>
+</html>
